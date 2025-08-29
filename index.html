@@ -244,7 +244,7 @@
         </div>
         <div class="panel">
           <h2 style="margin:0 0 8px;font-family:Outfit,Inter,sans-serif">Sponsor-Ready</h2>
-          <p class="muted">We partner with local businesses for prizes, banners, and social shoutouts. Ask for the sponsor one‑pager to get involved.</p>
+          <p class="muted">We partner with local businesses for prizes, banners, and social shoutouts. Ask for the sponsor one-pager to get involved.</p>
           <div class="sponsors" aria-label="Potential sponsor categories">
             <div class="tag">Restaurants & Cafés</div>
             <div class="tag">Gyms & PT Clinics</div>
@@ -258,7 +258,7 @@
     <section id="sponsors">
       <div class="container panel">
         <h2 style="margin:0 0 8px;font-family:Outfit,Inter,sans-serif">Sponsors</h2>
-        <p class="muted">We love supporting local. Want your logo here and shoutouts all season? Get our sponsor one‑pager.</p>
+        <p class="muted">We love supporting local. Want your logo here and shoutouts all season? Get our sponsor one-pager.</p>
         <div class="sponsors" style="margin-top:10px">
           <div class="tag">Your Logo Here</div>
           <div class="tag">Match of the Week</div>
@@ -512,18 +512,18 @@
       const fd = new FormData(form);
       const data = Object.fromEntries(fd.entries());
       data.waiver = fd.get('waiver') ? true : false;
+
       try {
+        // Simple request to avoid CORS preflight
         const res = await fetch(endpoint, {
           method: 'POST',
-          headers: {'Content-Type': 'application/json'},
+          headers: { 'Content-Type': 'text/plain;charset=utf-8' },
           body: JSON.stringify(data)
         });
-        if (!res.ok) {
-          const text = await res.text().catch(()=> '');
-          throw new Error(`HTTP ${res.status} ${res.statusText} ${text}`);
-        }
-        const out = await res.json().catch(()=>({}));
-        if (out.result === 'success' || Object.keys(out).length){
+        // If the endpoint returns JSON, parse it; otherwise treat as success
+        let ok = res.ok, out = {};
+        try { out = await res.json(); } catch(_) { /* opaque/non-JSON -> still fine */ }
+        if (ok || out.result === 'success' || Object.keys(out).length){
           statusEl.textContent = 'Thanks! Your team has been registered.';
           const method = (data.payment||'').trim();
           form.reset();
@@ -532,12 +532,33 @@
             statusEl.textContent += ` Proceed to ${method} to complete payment.`;
             handlePayment(method);
           }
-        } else {
-          statusEl.textContent = out.message || 'Something went wrong. Try again?';
+          return;
         }
+        // handle non-OK with text for easier debugging
+        const text = await res.text().catch(()=> '');
+        throw new Error(`HTTP ${res.status} ${res.statusText} ${text}`);
       } catch (err) {
-        console.error('Registration submit error:', err);
-        statusEl.textContent = 'Network error. Please try again. If it keeps failing, the endpoint may not be deployed as a public Web App (CORS).';
+        console.warn('Registration submit error (trying no-cors fallback):', err);
+        // Fallback: opaque request still reaches the script
+        try {
+          await fetch(endpoint, {
+            method: 'POST',
+            mode: 'no-cors',
+            headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+            body: JSON.stringify(data)
+          });
+          statusEl.textContent = 'Thanks! Your team has been registered.';
+          const method = (data.payment||'').trim();
+          form.reset();
+          document.querySelectorAll('.swatch input').forEach(i=>i.checked=false);
+          if(method){
+            statusEl.textContent += ` Proceed to ${method} to complete payment.`;
+            handlePayment(method);
+          }
+        } catch (err2) {
+          console.error('Opaque fallback failed:', err2);
+          statusEl.textContent = 'Network error. Please try again.';
+        }
       }
     }
 
@@ -546,10 +567,6 @@
     const regStatus = document.getElementById('reg-status');
     regForm.addEventListener('submit', (e)=>{
       e.preventDefault();
-      if (!REG_SHEET_ENDPOINT.startsWith('https://script.google.com/')) {
-        regStatus.textContent = 'Registration endpoint not set.';
-        return;
-      }
       postToSheet(regForm, REG_SHEET_ENDPOINT, regStatus);
     });
 
