@@ -3,11 +3,11 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Augusta Pickleball Club — Partner Doubles League</title>
+  <title>Augusta Pickleball Club — Doubles League</title>
   <meta name="description" content="Join the Augusta Pickleball Club — a partner-based doubles league on free public courts across the Greater Augusta area." />
   <meta name="theme-color" content="#20b36c" />
   <meta property="og:title" content="Augusta Pickleball Club — Doubles League" />
-  <meta property="og:description" content="Founding season now enrolling. Affordable, social, and competitive divisions." />
+  <meta property="og:description" content="Founding season now enrolling. Affordable, social, and competitive." />
   <meta property="og:type" content="website" />
   <meta property="og:image" content="https://images.unsplash.com/photo-1658436243671-99a2c04f5bdb?q=80&w=1200&auto=format&fit=crop" />
   <meta name="twitter:card" content="summary_large_image" />
@@ -42,15 +42,25 @@
       --shadow: 0 12px 30px rgba(16,24,40,.08);
       --radius:16px;
       --radius-lg:22px;
-      --container:1120px;
+      --container:1400px; /* widened from 1120px */
     }
     *{box-sizing:border-box}
     html,body{margin:0;padding:0;background:var(--bg);color:var(--text);font-family:Inter,system-ui,Segoe UI,Roboto,Arial,sans-serif}
     a{color:inherit;text-decoration:none}
     img{max-width:100%;display:block}
     html{scroll-behavior:smooth}
-    .container{max-width:var(--container);margin:0 auto;padding:0 20px}
+
+    /* Subtle sitewide background so edges don't feel empty */
+    body{
+      background:
+        radial-gradient(1200px 600px at 100% 0%, #eaf3ff 0%, rgba(234,243,255,0) 60%),
+        radial-gradient(900px 500px at 0% 20%, #ebfff6 0%, rgba(235,255,246,0) 55%),
+        var(--bg);
+    }
+
+    .container{max-width:var(--container);margin:0 auto;padding:0 24px}
     .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+
     /* Header */
     .skip{position:absolute;left:-999px;top:0;background:#000;color:#fff;padding:8px 12px;border-radius:8px}
     .skip:focus{left:12px;top:12px;z-index:1000}
@@ -67,8 +77,10 @@
     .actions{display:flex;align-items:center;gap:10px}
     .btn{display:inline-flex;align-items:center;justify-content:center;padding:10px 18px;border-radius:999px;font-weight:600;cursor:pointer;transition:.2s}
     .btn-outline{border:1px solid var(--line);background:#fff}
-    .btn-primary{background:linear-gradient(135deg,var(--brand),var(--brand-2));color:#fff;border:none}
+    .btn-primary{background:linear-gradient(135deg,var(--brand),var(--brand-2));color:#fff;border:none;background-size:200% 200%;animation:gradientShift 6s ease infinite}
     .btn:hover{transform:translateY(-1px);box-shadow:var(--shadow)}
+    @keyframes gradientShift{0%{background-position:0% 50%}100%{background-position:100% 50%}}
+
     /* Mobile nav */
     .menu-toggle{display:none}
     .nav-links{display:flex;gap:2px;flex-wrap:wrap}
@@ -80,40 +92,53 @@
         position:absolute;left:0;right:0;top:58px;padding:10px 20px;background:#fff;border-bottom:1px solid var(--line)
       }
     }
+
+    /* Full-bleed helpers */
+    section{padding:74px 0}
+    .full-bleed{position:relative;isolation:isolate}
+    .full-bleed::before{
+      content:"";position:absolute;inset:0;z-index:-1;
+      background:linear-gradient(135deg, rgba(32,179,108,.08), rgba(44,135,240,.08));
+    }
+
     /* Hero */
-    .hero{background:linear-gradient(180deg,var(--bg-2),var(--bg));padding:90px 0 70px}
-    .hero-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:40px;align-items:center}
-    .headline{font-family:Outfit,Inter,sans-serif;font-size:clamp(2rem,4vw,3.2rem);line-height:1.05;margin:0 0 12px}
-    .sub{font-size:1.1rem;color:var(--muted);max-width:60ch}
+    .hero{padding:100px 0 80px}
+    .hero::before{background:linear-gradient(180deg, rgba(44,135,240,.10) 0%, rgba(248,251,255,1) 70%)}
+    .hero-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:48px;align-items:center}
+    .headline{font-family:Outfit,Inter,sans-serif;font-size:clamp(2rem,4vw,3.4rem);line-height:1.05;margin:0 0 12px}
+    .sub{font-size:1.12rem;color:var(--muted);max-width:62ch}
     .chips{display:flex;gap:10px;flex-wrap:wrap;margin:18px 0 26px}
     .chip{padding:7px 12px;border:1px solid var(--line);border-radius:999px;color:#475569;background:#fff}
-    .mock{border-radius:var(--radius-lg);overflow:hidden;border:1px solid var(--line);box-shadow:var(--shadow)}
-    /* Sections */
-    section{padding:74px 0}
+    .mock{border-radius:28px;overflow:hidden;border:none;box-shadow:var(--shadow)}
+
+    /* Typographic accents */
     .eyebrow{display:inline-flex;align-items:center;gap:8px;font-weight:700;color:#334155;text-transform:uppercase;letter-spacing:.12em;font-size:.78rem}
     .eyebrow::before{content:"";display:inline-block;width:24px;height:3px;border-radius:2px;background:linear-gradient(90deg,var(--brand),var(--brand-2))}
-    .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
-    .card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:22px;box-shadow:var(--shadow)}
+
+    /* Cards & panels */
+    .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:28px}
+    .card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:24px;box-shadow:var(--shadow)}
     .card h3{margin:6px 0 8px;font-family:Outfit,Inter,sans-serif}
     .muted{color:var(--muted)}
-    .grid-2{display:grid;grid-template-columns:1fr 1fr;gap:28px;align-items:center}
-    .panel{background:var(--card);border:1px solid var(--line);border-radius:var(--radius-lg);padding:26px;box-shadow:var(--shadow)}
+    .grid-2{display:grid;grid-template-columns:1fr 1fr;gap:32px;align-items:center}
+    .panel{background:var(--card);border:1px solid var(--line);border-radius:var(--radius-lg);padding:28px;box-shadow:var(--shadow)}
+    @media (max-width: 1020px){.hero-grid{grid-template-columns:1fr}.grid-2{grid-template-columns:1fr}}
+
     /* FAQ */
     .faq{display:grid;gap:12px}
     details{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:14px 16px;box-shadow:var(--shadow)}
     details summary{list-style:none;cursor:pointer;font-weight:700}
     details[open]{border-color:#c0d2ef}
+
     /* Sponsors */
     .sponsors{display:flex;gap:12px;flex-wrap:wrap}
     .sponsors .tag{padding:10px 14px;border:1px dashed #c8d3e5;border-radius:12px;color:#42526b;background:#fff}
+
     /* Footer */
     footer{padding:38px 0;background:var(--bg-2);border-top:1px solid var(--line);color:#64748b}
     .footer-grid{display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap}
     .socials{display:flex;gap:10px}
     .socials a{display:grid;place-items:center;width:38px;height:38px;border-radius:12px;border:1px solid var(--line);background:#fff}
-    /* Responsive */
-    @media (max-width: 1020px){.hero-grid{grid-template-columns:1fr}}
-    @media (max-width: 900px){.cards{grid-template-columns:1fr}.grid-2{grid-template-columns:1fr}}
 
     /* ---------- Form tweaks (checkbox/layout) ---------- */
     .check{display:flex;align-items:flex-start;gap:10px}
@@ -158,6 +183,21 @@
     .swatch input:checked + label{border-color:#111827}
     .help{font-size:.85rem;color:#64748b;margin-top:6px}
 
+    /* Success Modal */
+    .modal-backdrop{
+      position:fixed;inset:0;background:rgba(17,24,39,.45);backdrop-filter:blur(4px);
+      display:none;align-items:center;justify-content:center;z-index:100;
+    }
+    .modal{
+      width:min(560px,92%);background:#fff;border:1px solid var(--line);
+      border-radius:20px;box-shadow:var(--shadow);padding:28px;text-align:center;
+    }
+    .modal h3{margin:8px 0 4px;font-family:Outfit,Inter,sans-serif}
+    .modal p{color:var(--muted);margin:8px 0 18px}
+    .modal .big-emoji{font-size:46px;line-height:1}
+    .modal .row{display:flex;gap:10px;justify-content:center;flex-wrap:wrap}
+    .hidden{display:none !important}
+
     /* Accessibility niceties */
     :focus-visible{outline:3px solid var(--brand-2);outline-offset:3px;border-radius:6px}
     @media (prefers-reduced-motion: reduce){
@@ -189,12 +229,12 @@
 
   <main id="main">
     <!-- HERO -->
-    <section class="hero">
+    <section class="hero full-bleed">
       <div class="container hero-grid">
         <div>
           <div class="eyebrow">Founding Season</div>
-          <h1 class="headline">Augusta’s Partner Doubles Pickleball League</h1>
-          <p class="sub">6–8 weeks • Free public courts • Beginner & Intermediate divisions • Affordable entry. Bring your teammate and we’ll handle the rest.</p>
+          <h1 class="headline">Augusta’s Pickleball League</h1>
+          <p class="sub">6–8 weeks • Free public courts • Affordable entry. Bring your teammate and we’ll handle the rest.</p>
           <div class="chips">
             <span class="chip">Round-robin schedule</span>
             <span class="chip">Medals & photos</span>
@@ -236,15 +276,14 @@
           <h2 style="margin:0 0 8px;font-family:Outfit,Inter,sans-serif">How It Works</h2>
           <ul class="muted" style="line-height:1.9;margin:0;padding-left:18px">
             <li>Season length: 6–8 weeks (1 match night per week)</li>
-            <li>Divisions: Beginner & Intermediate</li>
-            <li>Match format: to 11 win by 2, or best-of-3 depending on turnout</li>
+            <li>Match format: to 11 win by 2. Best of 1-3 depending on the game.</li>
             <li>Locations: Greater Augusta free public courts</li>
             <li>Finals night with medals and photos</li>
           </ul>
         </div>
         <div class="panel">
           <h2 style="margin:0 0 8px;font-family:Outfit,Inter,sans-serif">Sponsor-Ready</h2>
-          <p class="muted">We partner with local businesses for prizes, banners, and social shoutouts. Ask for the sponsor one‑pager to get involved.</p>
+          <p class="muted">We partner with local businesses for prizes, banners, and social shoutouts. Ask for the sponsor one-pager to get involved.</p>
           <div class="sponsors" aria-label="Potential sponsor categories">
             <div class="tag">Restaurants & Cafés</div>
             <div class="tag">Gyms & PT Clinics</div>
@@ -254,11 +293,11 @@
       </div>
     </section>
 
-    <!-- SPONSORS -->
-    <section id="sponsors">
+    <!-- SPONSORS (give this a soft full-bleed tint) -->
+    <section id="sponsors" class="full-bleed">
       <div class="container panel">
         <h2 style="margin:0 0 8px;font-family:Outfit,Inter,sans-serif">Sponsors</h2>
-        <p class="muted">We love supporting local. Want your logo here and shoutouts all season? Get our sponsor one‑pager.</p>
+        <p class="muted">We love supporting local. Want your logo here and shoutouts all season? Get our sponsor one-pager.</p>
         <div class="sponsors" style="margin-top:10px">
           <div class="tag">Your Logo Here</div>
           <div class="tag">Match of the Week</div>
@@ -274,19 +313,19 @@
         <div class="faq">
           <details>
             <summary>Do I need a partner to register?</summary>
-            <div class="muted">Yes — the league is partner-based doubles only. Please register as a team of two.</div>
+            <div class="muted">Yes, as of now the league is doubles only. More divisons can be added depending on turnout.</div>
           </details>
           <details>
             <summary>What’s the cost?</summary>
-            <div class="muted">We keep fees affordable. Final pricing is listed on the registration flow; sponsors help us keep costs low. Fees cover balls, medals, photos, and admin. <strong>No hidden charges.</strong></div>
+            <div class="muted">$20 Per Person Per Season. No additional costs.</div>
           </details>
           <details>
             <summary>Where are matches played?</summary>
-            <div class="muted">Free public courts around Greater Augusta (e.g., Riverview Park, Warren Road, Lonnie Morris). Final schedule is shared after registration closes.</div>
+            <div class="muted">We are using numerous public courts around the Augusta area, and are working on securing private courts as well.</div>
           </details>
           <details>
             <summary>What should I bring?</summary>
-            <div class="muted">Your paddle, water, good vibes — we provide balls and your team wristbands in your chosen color.</div>
+            <div class="muted">Your paddle, water, and a competitive spirit. We will have extra balls, and your team wristbands in your chosen color.</div>
           </details>
         </div>
       </div>
@@ -309,8 +348,7 @@
 
             <div class="full"><label for="name">Your Name</label><input id="name" name="name" required autocomplete="name" minlength="2" maxlength="80"></div>
             <div><label for="email">Email</label><input id="email" name="email" type="email" required autocomplete="email"></div>
-            <div><label for="phone">Phone</label><input id="phone" name="phone" type="tel" inputmode="tel" pattern="^[0-9\-\+\s\(\)]{7,}$" aria-describedby="phone_help" autocomplete="tel"></div>
-            <div class="full"><p id="phone_help" class="help">Use digits only or (xxx) xxx-xxxx.</p></div>
+            <div><label for="phone">Phone</label><input id="phone" name="phone" type="tel" inputmode="tel" required pattern="^\d{3}-\d{3}-\d{4}$" maxlength="12" autocomplete="tel" placeholder="706-123-4567"></div>
             <div class="full"><label for="message">Message</label><textarea id="message" name="message" required minlength="10" maxlength="1000"></textarea></div>
             <div class="full">
               <button class="btn btn-primary" type="submit">Send Message</button>
@@ -355,32 +393,19 @@
           </div>
           <p class="help">We’ll provide matching wristbands in your chosen color on week one.</p>
         </div>
-        <!-- Division -->
-        <div class="full">
-          <label for="division">Division Preference</label>
-          <select id="division" name="division" required>
-            <option value="" selected disabled>Select one</option>
-            <option>Beginner / Recreational</option>
-            <option>Intermediate / Competitive</option>
-          </select>
-        </div>
+
         <!-- Player 1 -->
         <div class="full"><h3 style="margin:12px 0 4px;font-family:Outfit,Inter,sans-serif">Player 1</h3></div>
         <div><label for="p1_name">Full Name</label><input id="p1_name" name="p1_name" required autocomplete="name"></div>
         <div><label for="p1_email">Email</label><input id="p1_email" name="p1_email" type="email" required autocomplete="email"></div>
-        <div><label for="p1_phone">Phone</label><input id="p1_phone" name="p1_phone" type="tel" required inputmode="tel" pattern="^[0-9\-\+\s\(\)]{7,}$" aria-describedby="p1_phone_help" autocomplete="tel"></div>
-        <div class="full"><p id="p1_phone_help" class="help">Use digits only or (xxx) xxx-xxxx.</p></div>
-        <div>
-          <label for="contact_pref">Preferred Contact</label>
-          <select id="contact_pref" name="contact_pref" required>
-            <option>Email</option><option>Text</option>
-          </select>
-        </div>
+        <div><label for="p1_phone">Phone</label><input id="p1_phone" name="p1_phone" type="tel" required inputmode="tel" pattern="^\d{3}-\d{3}-\d{4}$" maxlength="12" autocomplete="tel" placeholder="706-123-4567"></div>
+
         <!-- Player 2 -->
         <div class="full"><h3 style="margin:12px 0 4px;font-family:Outfit,Inter,sans-serif">Player 2</h3></div>
         <div><label for="p2_name">Full Name</label><input id="p2_name" name="p2_name" required autocomplete="name"></div>
         <div><label for="p2_email">Email</label><input id="p2_email" name="p2_email" type="email" required autocomplete="email"></div>
-        <div class="full"><label for="p2_phone">Phone</label><input id="p2_phone" name="p2_phone" type="tel" required inputmode="tel" pattern="^[0-9\-\+\s\(\)]{7,}$" autocomplete="tel"></div>
+        <div class="full"><label for="p2_phone">Phone</label><input id="p2_phone" name="p2_phone" type="tel" required inputmode="tel" pattern="^\d{3}-\d{3}-\d{4}$" maxlength="12" autocomplete="tel" placeholder="706-123-4567"></div>
+
         <!-- Payment -->
         <div class="full">
           <label for="payment">Payment Method</label>
@@ -392,6 +417,7 @@
           </select>
           <p class="help">Registration is confirmed once payment is received.</p>
         </div>
+
         <!-- Agreements -->
         <div class="full check">
           <input id="waiver" name="waiver" type="checkbox" required>
@@ -406,6 +432,19 @@
       </form>
     </main>
   </aside>
+
+  <!-- Success Modal -->
+  <div id="successBackdrop" class="modal-backdrop" aria-hidden="true" role="dialog" aria-modal="true">
+    <div class="modal" role="document" aria-labelledby="successTitle">
+      <div class="big-emoji" aria-hidden="true">😊</div>
+      <h3 id="successTitle">Thanks for registering!</h3>
+      <p id="successDesc">We’ve received your team details. If you chose a payment method, a new tab just opened to complete payment.</p>
+      <div class="row">
+        <button id="closeSuccess" class="btn btn-outline">Close</button>
+        <a href="#contact" id="contactLink" class="btn btn-primary">Questions? Contact us</a>
+      </div>
+    </div>
+  </div>
 
   <footer>
     <div class="container footer-grid">
@@ -459,9 +498,7 @@
       backdrop.classList.add('open');
       backdrop.removeAttribute('aria-hidden');
       document.body.style.overflow = 'hidden';
-      // focus first input
       setTimeout(()=>{ document.getElementById('team').focus(); }, 80);
-      // push state for deep linking
       history.pushState({drawer:true}, '', '#register');
     }
     function closeDrawer(){
@@ -471,26 +508,22 @@
       backdrop.setAttribute('aria-hidden', 'true');
       document.body.style.overflow = '';
       if(lastFocus) lastFocus.focus();
-      // remove hash if present
       if(location.hash === '#register'){ history.replaceState({}, '', location.pathname + location.search); }
     }
     openBtns.forEach(b=>b.addEventListener('click', openDrawer));
     closeBtn.addEventListener('click', closeDrawer);
     backdrop.addEventListener('click', closeDrawer);
     window.addEventListener('keydown', (e)=>{ if(e.key === 'Escape') closeDrawer(); });
-    // Open if hash is #register (direct links)
     if(location.hash === '#register'){ openDrawer(); }
-    window.addEventListener('popstate', (e)=>{
-      if(!e.state || !e.state.drawer){ closeDrawer(); }
-    });
+    window.addEventListener('popstate', (e)=>{ if(!e.state || !e.state.drawer){ closeDrawer(); }});
 
     // ---------- Google Sheets endpoint (Apps Script) ----------
-    const REG_SHEET_ENDPOINT = "https://script.google.com/macros/s/AKfycbzut3DQR47LJ3piko-kQ-CeEXiAG8s_x-xWQigBehQuzbkrqT4iBphkUWaGROvtNXuo/exec";
+    const REG_SHEET_ENDPOINT = "https://script.googleusercontent.com/macros/echo?user_content_key=AehSKLitSg2WZ-YfCDDVp3vkHpeZgMUHMCzCOt2Qylr_2GlX50MKdqeV63cxhbyFm5YmAYkso0iHJ3WtHaapHbef8E2EKtDs9GWjNK4VFo2dLe616BumyaWrIjQ85wooDywLUJrLQHGtQ-xJUXu_a6_S_H1LnkuGGXdBYjfERD_yza5Cxs11BbPqNu0m6dEuR_99YVC9WAoJiqX78KtNMHTdAKhMBF0rnR3azYFuJAEMRHRjYaXSjVTS4ZGUVp6Gk7vFXhXiNhMS5KEFjGYznbvJn4RhwCIb6w&lib=Mi_HN2tLfa09OG1u6NxEStbfXD67bso5k";
 
     // ---- Payment config (replace with your real values) ----
     const TEAM_FEE = 40; // e.g., 40 = $40 per team
-    const PAYPAL_ME = "https://paypal.me/YOURHANDLE"; // supports /amount (e.g., /40)
-    const CASHAPP_TAG = "$YourCashtag";             // Cash App tag only (with $)
+    const PAYPAL_ME = "https://paypal.me/YOURHANDLE";        // supports /amount (e.g., /40)
+    const CASHAPP_TAG = "$YourCashtag";                       // Cash App tag only (with $)
     const STRIPE_PAYMENT_LINK = "https://buy.stripe.com/YOUR_LINK"; // Stripe Payment Link
 
     function handlePayment(method){
@@ -507,37 +540,71 @@
       }catch(e){ console.error('Payment redirect error', e); }
     }
 
+    // -------- Success Modal helpers --------
+    const successBackdrop = document.getElementById('successBackdrop');
+    const closeSuccessBtn = document.getElementById('closeSuccess');
+    function openSuccess(){
+      successBackdrop.style.display = 'flex';
+      successBackdrop.setAttribute('aria-hidden','false');
+      closeSuccessBtn?.focus();
+    }
+    function closeSuccess(){
+      successBackdrop.style.display = 'none';
+      successBackdrop.setAttribute('aria-hidden','true');
+    }
+    closeSuccessBtn?.addEventListener('click', closeSuccess);
+    successBackdrop?.addEventListener('click', (e)=>{ if(e.target === successBackdrop) closeSuccess(); });
+    window.addEventListener('keydown', (e)=>{ if(e.key === 'Escape') closeSuccess(); });
+
+    // ---------- Phone formatting (###-###-####) ----------
+    function maskPhone(el){
+      const digits = el.value.replace(/\D/g,'').slice(0,10);
+      let out = '';
+      if(digits.length <= 3) out = digits;
+      else if(digits.length <= 6) out = `${digits.slice(0,3)}-${digits.slice(3)}`;
+      else out = `${digits.slice(0,3)}-${digits.slice(3,6)}-${digits.slice(6)}`;
+      el.value = out;
+    }
+    function attachPhoneMask(id){
+      const input = document.getElementById(id);
+      if(!input) return;
+      input.addEventListener('input', ()=> maskPhone(input));
+      input.addEventListener('blur', ()=> maskPhone(input));
+    }
+    ['phone','p1_phone','p2_phone'].forEach(attachPhoneMask);
+
+    // ---------- Submission ----------
+    function toFormEncoded(obj){
+      const p = new URLSearchParams();
+      for (const [k, v] of Object.entries(obj)) p.append(k, v == null ? '' : String(v));
+      return p.toString();
+    }
+
     async function postToSheet(form, endpoint, statusEl){
       statusEl.textContent = 'Sending…';
       const fd = new FormData(form);
       const data = Object.fromEntries(fd.entries());
-      data.waiver = fd.get('waiver') ? true : false;
+      data.waiver = fd.get('waiver') ? 'true' : 'false';
+
       try {
-        const res = await fetch(endpoint, {
+        // Try CORS-friendly first (no preflight)
+        await fetch(endpoint, {
           method: 'POST',
-          headers: {'Content-Type': 'application/json'},
-          body: JSON.stringify(data)
+          mode: 'no-cors',
+          headers: { 'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8' },
+          body: toFormEncoded(data)
         });
-        if (!res.ok) {
-          const text = await res.text().catch(()=> '');
-          throw new Error(`HTTP ${res.status} ${res.statusText} ${text}`);
-        }
-        const out = await res.json().catch(()=>({}));
-        if (out.result === 'success' || Object.keys(out).length){
-          statusEl.textContent = 'Thanks! Your team has been registered.';
-          const method = (data.payment||'').trim();
-          form.reset();
-          document.querySelectorAll('.swatch input').forEach(i=>i.checked=false);
-          if(method){
-            statusEl.textContent += ` Proceed to ${method} to complete payment.`;
-            handlePayment(method);
-          }
-        } else {
-          statusEl.textContent = out.message || 'Something went wrong. Try again?';
-        }
+
+        // Success UI (opaque response)
+        statusEl.textContent = '';
+        const method = (data.payment||'').trim();
+        form.reset();
+        document.querySelectorAll('.swatch input').forEach(i=>i.checked=false);
+        if(method) handlePayment(method);
+        openSuccess();
       } catch (err) {
         console.error('Registration submit error:', err);
-        statusEl.textContent = 'Network error. Please try again. If it keeps failing, the endpoint may not be deployed as a public Web App (CORS).';
+        statusEl.textContent = 'Network error. Please try again.';
       }
     }
 
@@ -546,10 +613,6 @@
     const regStatus = document.getElementById('reg-status');
     regForm.addEventListener('submit', (e)=>{
       e.preventDefault();
-      if (!REG_SHEET_ENDPOINT.startsWith('https://script.google.com/')) {
-        regStatus.textContent = 'Registration endpoint not set.';
-        return;
-      }
       postToSheet(regForm, REG_SHEET_ENDPOINT, regStatus);
     });
 
@@ -559,7 +622,6 @@
     function postForm(form, endpoint, statusEl){
       statusEl.textContent = 'Sending…';
       const fd = new FormData(form);
-      // anti-spam
       if (fd.get('_hp')) { statusEl.textContent = 'Blocked.'; return; }
       const sentAt = Number(fd.get('_ts') || 0);
       if (Date.now() - sentAt < 3000) { statusEl.textContent = 'Please try again.'; return; }
@@ -572,7 +634,6 @@
     // Contact form submit
     const contactForm = document.getElementById('contact-form');
     const contactStatus = document.getElementById('form-status');
-    // populate timestamp when page loads
     document.getElementById('ts').value = Date.now();
 
     // Inline validity styles for both forms
@@ -596,6 +657,11 @@
         return;
       }
       postForm(contactForm, CONTACT_FORMSPREE_ID, contactStatus);
+    });
+
+    // Hook "Questions? Contact us" to also close the success modal
+    document.getElementById('contactLink')?.addEventListener('click', ()=>{
+      closeSuccess();
     });
   </script>
 </body>
