@@ -6,28 +6,47 @@
   <title>Augusta Pickleball Club — Doubles League</title>
   <meta name="description" content="Join the Augusta Pickleball Club — a partner-based doubles league on free public courts across the Greater Augusta area." />
   <meta name="theme-color" content="#20b36c" />
+  <meta name="robots" content="index,follow">
   <meta property="og:title" content="Augusta Pickleball Club — Doubles League" />
   <meta property="og:description" content="Founding season now enrolling. Affordable, social, and competitive." />
   <meta property="og:type" content="website" />
   <meta property="og:image" content="https://images.unsplash.com/photo-1658436243671-99a2c04f5bdb?q=80&w=1200&auto=format&fit=crop" />
+  <meta property="og:site_name" content="Augusta Pickleball Club">
   <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:site" content="@yourhandle">
   <link rel="canonical" href="https://augustapickleball.club/">
+  <link rel="icon" href="favicon.ico" type="image/x-icon">
+  <link rel="apple-touch-icon" href="favicon.ico">
+
+
   <script type="application/ld+json">
   {
-    "@context":"https://schema.org",
-    "@type":"SportsOrganization",
-    "name":"Augusta Pickleball Club",
-    "url":"https://augustapickleball.club/",
-    "email":"hello@augustapickleball.club",
-    "sport":"Pickleball",
-    "areaServed":"Augusta, Georgia",
-    "sameAs":["https://instagram.com/yourhandle","https://facebook.com/yourpage"]
+    "@context": "https://schema.org",
+    "@type": "SportsOrganization",
+    "name": "Augusta Pickleball Club",
+    "url": "https://augustapickleball.club/",
+    "email": "mailto:hello@augustapickleball.club",
+    "logo": "https://augustapickleball.club/augusta-pickleball-logo.png",
+    "sport": "Pickleball",
+    "areaServed": "Augusta, Georgia",
+    "foundingDate": "2025-09-01",
+    "sameAs": [
+      "https://instagram.com/yourhandle",
+      "https://facebook.com/yourpage"
+    ],
+    "contactPoint": [{
+      "@type": "ContactPoint",
+      "contactType": "customer support",
+      "email": "mailto:hello@augustapickleball.club"
+    }]
   }
   </script>
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Outfit:wght@600;800&display=swap" rel="stylesheet">
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='32' cy='32' r='30' fill='%2320b36c'/%3E%3Ccircle cx='32' cy='32' r='18' fill='white'/%3E%3Ccircle cx='42' cy='24' r='5' fill='%232c87f0'/%3E%3C/svg%3E">
+
   <style>
     :root{
       --bg: #f8fbff;
@@ -109,7 +128,39 @@
     .sub{font-size:1.12rem;color:var(--muted);max-width:62ch}
     .chips{display:flex;gap:10px;flex-wrap:wrap;margin:18px 0 26px}
     .chip{padding:7px 12px;border:1px solid var(--line);border-radius:999px;color:#475569;background:#fff}
-    .mock{border-radius:28px;overflow:hidden;border:none;box-shadow:var(--shadow)}
+
+    /* HERO logo — no white card, larger, with soft reflection */
+    .mock{
+  border-radius:0;         /* no rounded background */
+  overflow:visible;
+  border:none;
+  box-shadow:none;
+  background:transparent;  /* remove white fill */
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  padding:0;
+}
+
+.mock img{
+  width:100%;
+  max-width:420px;         /* scale up as needed */
+  height:auto;
+  display:block;
+  object-fit:contain;
+  filter: drop-shadow(0 8px 18px rgba(0,0,0,0.2)) 
+          drop-shadow(0 2px 4px rgba(0,0,0,0.15));
+}
+
+/* Optional reflection effect */
+.mock img::after{
+  content:"";
+  display:block;
+  transform:scaleY(-1);
+  opacity:0.15;
+}
+
+
 
     /* Typographic accents */
     .eyebrow{display:inline-flex;align-items:center;gap:8px;font-weight:700;color:#334155;text-transform:uppercase;letter-spacing:.12em;font-size:.78rem}
@@ -210,7 +261,9 @@
   <header>
     <div class="container nav" id="nav">
       <div class="brand">
-        <div class="logo" aria-hidden="true"></div>
+        <img src="augusta-pickleball-logo.png" 
+             alt="Augusta Pickleball Club logo" 
+             width="50" height="50" style="border-radius:50%">
         <span>Augusta Pickleball Club</span>
       </div>
       <nav class="nav-links" aria-label="Primary">
@@ -243,7 +296,7 @@
           <button id="openReg2" class="btn btn-primary">Reserve Your Team Spot</button>
         </div>
         <div class="mock">
-          <img alt="Pickleball players competing on outdoor courts" src="https://images.unsplash.com/photo-1658436243671-99a2c04f5bdb?q=80&w=1600&auto=format&fit=crop" fetchpriority="high" decoding="async" />
+          <img alt="Pickleball players competing on outdoor courts" src="augusta-pickleball-logo.png" fetchpriority="high" decoding="async" />
         </div>
       </div>
     </section>
@@ -313,11 +366,11 @@
         <div class="faq">
           <details>
             <summary>Do I need a partner to register?</summary>
-            <div class="muted">Yes, as of now the league is doubles only. More divisons can be added depending on turnout.</div>
+            <div class="muted">Yes, as of now the league is doubles only. More divisions can be added depending on turnout.</div>
           </details>
           <details>
             <summary>What’s the cost?</summary>
-            <div class="muted">$20 Per Person Per Season. No additional costs.</div>
+            <div class="muted">$20 per player (=$40 per team) for the season. No additional costs.</div>
           </details>
           <details>
             <summary>Where are matches played?</summary>
@@ -438,7 +491,7 @@
     <div class="modal" role="document" aria-labelledby="successTitle">
       <div class="big-emoji" aria-hidden="true">😊</div>
       <h3 id="successTitle">Thanks for registering!</h3>
-      <p id="successDesc">We’ve received your team details. If you chose a payment method, a new tab just opened to complete payment.</p>
+      <p id="successDesc" aria-live="polite">We’ve received your team details. If you chose a payment method, a new tab just opened to complete payment.</p>
       <div class="row">
         <button id="closeSuccess" class="btn btn-outline">Close</button>
         <a href="#contact" id="contactLink" class="btn btn-primary">Questions? Contact us</a>
@@ -573,11 +626,20 @@
     }
     ['phone','p1_phone','p2_phone'].forEach(attachPhoneMask);
 
-    // ---------- Submission ----------
+    // ---------- Submission helpers ----------
     function toFormEncoded(obj){
       const p = new URLSearchParams();
       for (const [k, v] of Object.entries(obj)) p.append(k, v == null ? '' : String(v));
       return p.toString();
+    }
+
+    // Prevent double submits
+    function disableWhileSending(btn, isSending){
+      if(!btn) return;
+      if (!btn.dataset.label) btn.dataset.label = btn.textContent;
+      btn.disabled = !!isSending;
+      btn.setAttribute('aria-disabled', String(!!isSending));
+      btn.textContent = isSending ? 'Sending…' : btn.dataset.label;
     }
 
     async function postToSheet(form, endpoint, statusEl){
@@ -587,13 +649,13 @@
       data.waiver = fd.get('waiver') ? 'true' : 'false';
 
       try {
-        // Try CORS-friendly first (no preflight)
-        await fetch(endpoint, {
+        const req = fetch(endpoint, {
           method: 'POST',
           mode: 'no-cors',
           headers: { 'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8' },
           body: toFormEncoded(data)
         });
+        await req;
 
         // Success UI (opaque response)
         statusEl.textContent = '';
@@ -602,9 +664,11 @@
         document.querySelectorAll('.swatch input').forEach(i=>i.checked=false);
         if(method) handlePayment(method);
         openSuccess();
+        return req;
       } catch (err) {
         console.error('Registration submit error:', err);
         statusEl.textContent = 'Network error. Please try again.';
+        throw err;
       }
     }
 
@@ -613,7 +677,11 @@
     const regStatus = document.getElementById('reg-status');
     regForm.addEventListener('submit', (e)=>{
       e.preventDefault();
-      postToSheet(regForm, REG_SHEET_ENDPOINT, regStatus);
+      const submitBtn = regForm.querySelector('button[type="submit"]');
+      disableWhileSending(submitBtn, true);
+      postToSheet(regForm, REG_SHEET_ENDPOINT, regStatus).finally(()=>{
+        disableWhileSending(submitBtn, false);
+      });
     });
 
     // ---------- Contact endpoint (Formspree or your backend) ----------
@@ -656,12 +724,17 @@
         contactStatus.textContent = 'Form endpoint not set. Replace CONTACT_FORMSPREE_ID.';
         return;
       }
+      const submitBtn = contactForm.querySelector('button[type="submit"]');
+      disableWhileSending(submitBtn, true);
       postForm(contactForm, CONTACT_FORMSPREE_ID, contactStatus);
+      setTimeout(()=> disableWhileSending(submitBtn, false), 1200);
     });
 
-    // Hook "Questions? Contact us" to also close the success modal
-    document.getElementById('contactLink')?.addEventListener('click', ()=>{
+    // Hook "Questions? Contact us" to close success modal + drawer, then focus the message box
+    document.getElementById('contactLink')?.addEventListener('click', (e)=>{
       closeSuccess();
+      if (typeof closeDrawer === 'function') closeDrawer();
+      setTimeout(()=>{ document.getElementById('message')?.focus(); }, 60);
     });
   </script>
 </body>
