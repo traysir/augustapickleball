@@ -18,7 +18,6 @@
   <link rel="icon" href="favicon.ico" type="image/x-icon">
   <link rel="apple-touch-icon" href="favicon.ico">
 
-
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -69,7 +68,6 @@
     img{max-width:100%;display:block}
     html{scroll-behavior:smooth}
 
-    /* Subtle sitewide background so edges don't feel empty */
     body{
       background:
         radial-gradient(1200px 600px at 100% 0%, #eaf3ff 0%, rgba(234,243,255,0) 60%),
@@ -80,7 +78,6 @@
     .container{max-width:var(--container);margin:0 auto;padding:0 24px}
     .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
 
-    /* Header */
     .skip{position:absolute;left:-999px;top:0;background:#000;color:#fff;padding:8px 12px;border-radius:8px}
     .skip:focus{left:12px;top:12px;z-index:1000}
     header{
@@ -100,7 +97,6 @@
     .btn:hover{transform:translateY(-1px);box-shadow:var(--shadow)}
     @keyframes gradientShift{0%{background-position:0% 50%}100%{background-position:100% 50%}}
 
-    /* Mobile nav */
     .menu-toggle{display:none}
     .nav-links{display:flex;gap:2px;flex-wrap:wrap}
     @media (max-width: 980px){
@@ -112,7 +108,6 @@
       }
     }
 
-    /* Full-bleed helpers */
     section{padding:74px 0}
     .full-bleed{position:relative;isolation:isolate}
     .full-bleed::before{
@@ -120,7 +115,6 @@
       background:linear-gradient(135deg, rgba(32,179,108,.08), rgba(44,135,240,.08));
     }
 
-    /* Hero */
     .hero{padding:100px 0 80px}
     .hero::before{background:linear-gradient(180deg, rgba(44,135,240,.10) 0%, rgba(248,251,255,1) 70%)}
     .hero-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:48px;align-items:center}
@@ -129,44 +123,13 @@
     .chips{display:flex;gap:10px;flex-wrap:wrap;margin:18px 0 26px}
     .chip{padding:7px 12px;border:1px solid var(--line);border-radius:999px;color:#475569;background:#fff}
 
-    /* HERO logo — no white card, larger, with soft reflection */
-    .mock{
-  border-radius:0;         /* no rounded background */
-  overflow:visible;
-  border:none;
-  box-shadow:none;
-  background:transparent;  /* remove white fill */
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  padding:0;
-}
+    .mock{border-radius:0;overflow:visible;border:none;background:transparent;display:flex;justify-content:center;align-items:center;padding:0}
+    .mock img{width:100%;max-width:420px;height:auto;display:block;object-fit:contain;filter: drop-shadow(0 8px 18px rgba(0,0,0,0.2)) drop-shadow(0 2px 4px rgba(0,0,0,0.15));}
+    .mock img::after{content:"";display:block;transform:scaleY(-1);opacity:0.15}
 
-.mock img{
-  width:100%;
-  max-width:420px;         /* scale up as needed */
-  height:auto;
-  display:block;
-  object-fit:contain;
-  filter: drop-shadow(0 8px 18px rgba(0,0,0,0.2)) 
-          drop-shadow(0 2px 4px rgba(0,0,0,0.15));
-}
-
-/* Optional reflection effect */
-.mock img::after{
-  content:"";
-  display:block;
-  transform:scaleY(-1);
-  opacity:0.15;
-}
-
-
-
-    /* Typographic accents */
     .eyebrow{display:inline-flex;align-items:center;gap:8px;font-weight:700;color:#334155;text-transform:uppercase;letter-spacing:.12em;font-size:.78rem}
     .eyebrow::before{content:"";display:inline-block;width:24px;height:3px;border-radius:2px;background:linear-gradient(90deg,var(--brand),var(--brand-2))}
 
-    /* Cards & panels */
     .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:28px}
     .card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:24px;box-shadow:var(--shadow)}
     .card h3{margin:6px 0 8px;font-family:Outfit,Inter,sans-serif}
@@ -175,41 +138,25 @@
     .panel{background:var(--card);border:1px solid var(--line);border-radius:var(--radius-lg);padding:28px;box-shadow:var(--shadow)}
     @media (max-width: 1020px){.hero-grid{grid-template-columns:1fr}.grid-2{grid-template-columns:1fr}}
 
-    /* FAQ */
     .faq{display:grid;gap:12px}
     details{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:14px 16px;box-shadow:var(--shadow)}
     details summary{list-style:none;cursor:pointer;font-weight:700}
     details[open]{border-color:#c0d2ef}
 
-    /* Sponsors */
     .sponsors{display:flex;gap:12px;flex-wrap:wrap}
     .sponsors .tag{padding:10px 14px;border:1px dashed #c8d3e5;border-radius:12px;color:#42526b;background:#fff}
 
-    /* Footer */
     footer{padding:38px 0;background:var(--bg-2);border-top:1px solid var(--line);color:#64748b}
     .footer-grid{display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap}
     .socials{display:flex;gap:10px}
     .socials a{display:grid;place-items:center;width:38px;height:38px;border-radius:12px;border:1px solid var(--line);background:#fff}
 
-    /* ---------- Form tweaks (checkbox/layout) ---------- */
     .check{display:flex;align-items:flex-start;gap:10px}
     .check input[type="checkbox"]{width:auto;height:18px;margin:3px 6px 0 2px;accent-color:var(--brand-2)}
     .check label{margin:0;cursor:pointer}
 
-    /* ---------- Registration Drawer (separate screen) ---------- */
-    .drawer-backdrop{
-      position:fixed;inset:0;z-index:80;background:rgba(17,24,39,.35);
-      opacity:0;pointer-events:none;transition:opacity .28s ease;
-      backdrop-filter:saturate(120%) blur(6px);
-    }
-    .drawer{
-      position:fixed;inset:0 0 0 auto;width:min(860px,100%);max-width:100%;
-      background:var(--card);border-left:1px solid var(--line);
-      transform:translateX(100%);
-      transition:transform .36s cubic-bezier(.22,.61,.36,1);
-      z-index:90;display:flex;flex-direction:column;
-      box-shadow:-24px 0 60px rgba(16,24,40,.12);
-    }
+    .drawer-backdrop{position:fixed;inset:0;z-index:80;background:rgba(17,24,39,.35);opacity:0;pointer-events:none;transition:opacity .28s ease;backdrop-filter:saturate(120%) blur(6px)}
+    .drawer{position:fixed;inset:0 0 0 auto;width:min(860px,100%);max-width:100%;background:var(--card);border-left:1px solid var(--line);transform:translateX(100%);transition:transform .36s cubic-bezier(.22,.61,.36,1);z-index:90;display:flex;flex-direction:column;box-shadow:-24px 0 60px rgba(16,24,40,.12)}
     .drawer.open{transform:translateX(0%)}
     .drawer-backdrop.open{opacity:1;pointer-events:auto}
     .drawer header{position:sticky;top:0;background:#fff;border-bottom:1px solid var(--line);z-index:2}
@@ -220,10 +167,7 @@
     .form-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
     .full{grid-column:1/-1}
     label{font-weight:600;font-size:.95rem;margin-bottom:6px;display:block}
-    input,select,textarea{
-      width:100%;padding:12px 14px;border-radius:12px;border:1px solid #cfd8e7;background:#fff;color:#111827;
-      transition:border-color .15s, box-shadow .15s;
-    }
+    input,select,textarea{width:100%;padding:12px 14px;border-radius:12px;border:1px solid #cfd8e7;background:#fff;color:#111827;transition:border-color .15s, box-shadow .15s}
     input:focus,select:focus,textarea:focus{border-color:var(--brand-2);box-shadow:0 0 0 6px var(--ring);outline:none}
     textarea{min-height:120px;resize:vertical}
     .status{font-weight:700;margin-left:12px}
@@ -234,26 +178,16 @@
     .swatch input:checked + label{border-color:#111827}
     .help{font-size:.85rem;color:#64748b;margin-top:6px}
 
-    /* Success Modal */
-    .modal-backdrop{
-      position:fixed;inset:0;background:rgba(17,24,39,.45);backdrop-filter:blur(4px);
-      display:none;align-items:center;justify-content:center;z-index:100;
-    }
-    .modal{
-      width:min(560px,92%);background:#fff;border:1px solid var(--line);
-      border-radius:20px;box-shadow:var(--shadow);padding:28px;text-align:center;
-    }
+    .modal-backdrop{position:fixed;inset:0;background:rgba(17,24,39,.45);backdrop-filter:blur(4px);display:none;align-items:center;justify-content:center;z-index:100}
+    .modal{width:min(560px,92%);background:#fff;border:1px solid var(--line);border-radius:20px;box-shadow:var(--shadow);padding:28px;text-align:center}
     .modal h3{margin:8px 0 4px;font-family:Outfit,Inter,sans-serif}
     .modal p{color:var(--muted);margin:8px 0 18px}
     .modal .big-emoji{font-size:46px;line-height:1}
     .modal .row{display:flex;gap:10px;justify-content:center;flex-wrap:wrap}
     .hidden{display:none !important}
 
-    /* Accessibility niceties */
     :focus-visible{outline:3px solid var(--brand-2);outline-offset:3px;border-radius:6px}
-    @media (prefers-reduced-motion: reduce){
-      *{animation:none !important;transition:none !important;scroll-behavior:auto !important}
-    }
+    @media (prefers-reduced-motion: reduce){*{animation:none !important;transition:none !important;scroll-behavior:auto !important}}
   </style>
 </head>
 <body>
@@ -261,9 +195,7 @@
   <header>
     <div class="container nav" id="nav">
       <div class="brand">
-        <img src="augusta-pickleball-logo.png" 
-             alt="Augusta Pickleball Club logo" 
-             width="50" height="50" style="border-radius:50%">
+        <img src="augusta-pickleball-logo.png" alt="Augusta Pickleball Club logo" width="50" height="50" style="border-radius:50%">
         <span>Augusta Pickleball Club</span>
       </div>
       <nav class="nav-links" aria-label="Primary">
@@ -281,7 +213,6 @@
   </header>
 
   <main id="main">
-    <!-- HERO -->
     <section class="hero full-bleed">
       <div class="container hero-grid">
         <div>
@@ -301,7 +232,6 @@
       </div>
     </section>
 
-    <!-- ABOUT -->
     <section id="about">
       <div class="container">
         <div class="eyebrow">Why Join</div>
@@ -322,7 +252,6 @@
       </div>
     </section>
 
-    <!-- FORMAT -->
     <section id="format">
       <div class="container grid-2">
         <div class="panel">
@@ -346,7 +275,6 @@
       </div>
     </section>
 
-    <!-- SPONSORS (give this a soft full-bleed tint) -->
     <section id="sponsors" class="full-bleed">
       <div class="container panel">
         <h2 style="margin:0 0 8px;font-family:Outfit,Inter,sans-serif">Sponsors</h2>
@@ -359,7 +287,6 @@
       </div>
     </section>
 
-    <!-- FAQ -->
     <section id="faq">
       <div class="container">
         <div class="eyebrow">FAQ</div>
@@ -390,7 +317,7 @@
         <div class="panel">
           <h2 style="margin-top:0;font-family:Outfit,Inter,sans-serif">Contact</h2>
           <p class="muted">Questions, sponsorships, or media? Send us a note — we usually reply within a day.</p>
-          <p class="muted">Or email us: <a href="mailto:hello@augustapickleball.club">hello@augustapickleball.club</a></p>
+          <!-- Removed the direct mailto line per your request -->
         </div>
         <div class="panel">
           <form id="contact-form" class="form-grid" novalidate>
@@ -413,7 +340,6 @@
     </section>
   </main>
 
-  <!-- Registration Drawer (separate screen with transition) -->
   <div id="drawerBackdrop" class="drawer-backdrop" aria-hidden="true"></div>
   <aside id="drawer" class="drawer" role="dialog" aria-modal="true" aria-labelledby="regTitle" aria-hidden="true">
     <header>
@@ -427,9 +353,7 @@
     <main class="wrap">
       <p class="muted">Register your <strong>team of two</strong>. Pay once per team. You’ll receive a confirmation email with next steps.</p>
       <form id="reg-form" class="form-grid" novalidate>
-        <!-- Team -->
         <div class="full"><label for="team">Team Name</label><input id="team" name="team" type="text" required minlength="2" maxlength="60" placeholder="e.g., River City Rallies" aria-invalid="false" autocomplete="organization"></div>
-        <!-- Team Color -->
         <div class="full">
           <label>Team Color</label>
           <div class="swatches" role="radiogroup" aria-label="Choose team color">
@@ -447,19 +371,16 @@
           <p class="help">We’ll provide matching wristbands in your chosen color on week one.</p>
         </div>
 
-        <!-- Player 1 -->
         <div class="full"><h3 style="margin:12px 0 4px;font-family:Outfit,Inter,sans-serif">Player 1</h3></div>
         <div><label for="p1_name">Full Name</label><input id="p1_name" name="p1_name" required autocomplete="name"></div>
         <div><label for="p1_email">Email</label><input id="p1_email" name="p1_email" type="email" required autocomplete="email"></div>
         <div><label for="p1_phone">Phone</label><input id="p1_phone" name="p1_phone" type="tel" required inputmode="tel" pattern="^\d{3}-\d{3}-\d{4}$" maxlength="12" autocomplete="tel" placeholder="706-123-4567"></div>
 
-        <!-- Player 2 -->
         <div class="full"><h3 style="margin:12px 0 4px;font-family:Outfit,Inter,sans-serif">Player 2</h3></div>
         <div><label for="p2_name">Full Name</label><input id="p2_name" name="p2_name" required autocomplete="name"></div>
         <div><label for="p2_email">Email</label><input id="p2_email" name="p2_email" type="email" required autocomplete="email"></div>
         <div class="full"><label for="p2_phone">Phone</label><input id="p2_phone" name="p2_phone" type="tel" required inputmode="tel" pattern="^\d{3}-\d{3}-\d{4}$" maxlength="12" autocomplete="tel" placeholder="706-123-4567"></div>
 
-        <!-- Payment -->
         <div class="full">
           <label for="payment">Payment Method</label>
           <select id="payment" name="payment" required>
@@ -471,13 +392,11 @@
           <p class="help">Registration is confirmed once payment is received.</p>
         </div>
 
-        <!-- Agreements -->
         <div class="full check">
           <input id="waiver" name="waiver" type="checkbox" required>
           <label for="waiver">I acknowledge I play at my own risk and agree to league rules and good sportsmanship.</label>
         </div>
 
-        <!-- Submit -->
         <div class="full" style="position:sticky;bottom:-12px;background:#fff;padding-bottom:8px">
           <button class="btn btn-primary" type="submit">Submit Registration</button>
           <span id="reg-status" class="status" role="status" aria-live="polite"></span>
@@ -486,7 +405,6 @@
     </main>
   </aside>
 
-  <!-- Success Modal -->
   <div id="successBackdrop" class="modal-backdrop" aria-hidden="true" role="dialog" aria-modal="true">
     <div class="modal" role="document" aria-labelledby="successTitle">
       <div class="big-emoji" aria-hidden="true">😊</div>
@@ -523,7 +441,7 @@
     // Year
     document.getElementById('y').textContent = new Date().getFullYear();
 
-    // Mobile menu toggle + focus management
+    // Mobile nav
     const nav = document.getElementById('nav');
     const menuBtn = document.getElementById('menuBtn');
     menuBtn.addEventListener('click', ()=>{
@@ -593,7 +511,6 @@
       }catch(e){ console.error('Payment redirect error', e); }
     }
 
-    // -------- Success Modal helpers --------
     const successBackdrop = document.getElementById('successBackdrop');
     const closeSuccessBtn = document.getElementById('closeSuccess');
     function openSuccess(){
@@ -609,7 +526,6 @@
     successBackdrop?.addEventListener('click', (e)=>{ if(e.target === successBackdrop) closeSuccess(); });
     window.addEventListener('keydown', (e)=>{ if(e.key === 'Escape') closeSuccess(); });
 
-    // ---------- Phone formatting (###-###-####) ----------
     function maskPhone(el){
       const digits = el.value.replace(/\D/g,'').slice(0,10);
       let out = '';
@@ -626,14 +542,12 @@
     }
     ['phone','p1_phone','p2_phone'].forEach(attachPhoneMask);
 
-    // ---------- Submission helpers ----------
     function toFormEncoded(obj){
       const p = new URLSearchParams();
       for (const [k, v] of Object.entries(obj)) p.append(k, v == null ? '' : String(v));
       return p.toString();
     }
 
-    // Prevent double submits
     function disableWhileSending(btn, isSending){
       if(!btn) return;
       if (!btn.dataset.label) btn.dataset.label = btn.textContent;
@@ -656,8 +570,6 @@
           body: toFormEncoded(data)
         });
         await req;
-
-        // Success UI (opaque response)
         statusEl.textContent = '';
         const method = (data.payment||'').trim();
         form.reset();
@@ -672,7 +584,6 @@
       }
     }
 
-    // Hook up the registration form
     const regForm = document.getElementById('reg-form');
     const regStatus = document.getElementById('reg-status');
     regForm.addEventListener('submit', (e)=>{
@@ -684,8 +595,8 @@
       });
     });
 
-    // ---------- Contact endpoint (Formspree or your backend) ----------
-    const CONTACT_FORMSPREE_ID = "https://formspree.io/f/YOUR_FORM_ID"; // TODO: replace with your real ID
+    // ---------- Contact endpoint (Apps Script) ----------
+    const CONTACT_ENDPOINT = "https://script.google.com/macros/s/AKfycbwJUCgRO4kNO_NyXRqnS5xpZKEQyvDLtrrxGsROYF51EzXfwMzvNthY4fDqKnsCG4Qnxg/exec"; // your web app URL
 
     function postForm(form, endpoint, statusEl){
       statusEl.textContent = 'Sending…';
@@ -693,44 +604,48 @@
       if (fd.get('_hp')) { statusEl.textContent = 'Blocked.'; return; }
       const sentAt = Number(fd.get('_ts') || 0);
       if (Date.now() - sentAt < 3000) { statusEl.textContent = 'Please try again.'; return; }
-      fetch(endpoint, { method:'POST', body: fd })
-        .then(r => r.ok ? r.json() : Promise.reject(r))
-        .then(() => { statusEl.textContent = 'Thanks! We’ll reply within 24 hours.'; form.reset(); })
-        .catch(() => { statusEl.textContent = 'Server error. Please try again.'; });
+
+      const data = Object.fromEntries(fd.entries());
+      const body = toFormEncoded(data);
+
+      fetch(endpoint, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8' },
+        body
+      })
+      .then(r => r.ok ? r.json() : Promise.reject(r))
+      .then(res => {
+        if (res && res.ok) {
+          statusEl.textContent = 'Thanks! We’ll reply within 24 hours.';
+          form.reset();
+        } else {
+          statusEl.textContent = 'Server error. Please try again.';
+        }
+      })
+      .catch(() => { statusEl.textContent = 'Network error. Please try again.'; });
     }
 
-    // Contact form submit
     const contactForm = document.getElementById('contact-form');
     const contactStatus = document.getElementById('form-status');
     document.getElementById('ts').value = Date.now();
 
-    // Inline validity styles for both forms
-    function setFieldValidity(input, ok){
-      input.setAttribute('aria-invalid', ok ? 'false' : 'true');
-      if(!ok) input.scrollIntoView({behavior:'smooth', block:'center'});
-    }
     [regForm, contactForm].forEach(frm=>{
-      frm?.addEventListener('invalid', (e)=>{
-        const el = e.target; setFieldValidity(el, false);
-      }, true);
-      frm?.addEventListener('input', (e)=>{
-        const el = e.target; if(el.checkValidity) setFieldValidity(el, el.checkValidity());
-      });
+      frm?.addEventListener('invalid', (e)=>{ const el = e.target; el.setAttribute('aria-invalid', 'true'); el.scrollIntoView({behavior:'smooth', block:'center'}); }, true);
+      frm?.addEventListener('input', (e)=>{ const el = e.target; if(el.checkValidity) el.setAttribute('aria-invalid', el.checkValidity() ? 'false' : 'true'); });
     });
 
     contactForm.addEventListener('submit', (e)=>{
       e.preventDefault();
-      if(!CONTACT_FORMSPREE_ID || CONTACT_FORMSPREE_ID.includes('YOUR_')){
-        contactStatus.textContent = 'Form endpoint not set. Replace CONTACT_FORMSPREE_ID.';
+      if(!CONTACT_ENDPOINT){
+        contactStatus.textContent = 'Form endpoint not set.';
         return;
       }
       const submitBtn = contactForm.querySelector('button[type="submit"]');
       disableWhileSending(submitBtn, true);
-      postForm(contactForm, CONTACT_FORMSPREE_ID, contactStatus);
+      postForm(contactForm, CONTACT_ENDPOINT, contactStatus);
       setTimeout(()=> disableWhileSending(submitBtn, false), 1200);
     });
 
-    // Hook "Questions? Contact us" to close success modal + drawer, then focus the message box
     document.getElementById('contactLink')?.addEventListener('click', (e)=>{
       closeSuccess();
       if (typeof closeDrawer === 'function') closeDrawer();
