@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Augusta Pickleball Club — Doubles League</title>
-  <meta name="description" content="Join the Augusta Pickleball Club — a partner-based doubles league on free public courts across the Greater Augusta area." />
+  <title>Pickleball League Augusta GA | Play Pickleball in Augusta | Augusta Pickleball Club</title>
+  <meta name="description" content="Join the top pickleball league in Augusta, GA. Play pickleball on public courts, meet local players, and compete in the Augusta Pickleball Club’s doubles league. Affordable, social, and open to all skill levels." />
   <meta name="theme-color" content="#20b36c" />
   <meta name="robots" content="index,follow">
   <meta property="og:title" content="Augusta Pickleball Club — Doubles League" />
@@ -19,16 +19,28 @@
   <link rel="apple-touch-icon" href="favicon.ico">
   <meta name="google-site-verification" content="google-site-verification=_j3btehsE842hNs1iPRDxGv5zAso_ETsV-AcITADM5Q" />
 
+  <link rel="sitemap" type="application/xml" href="sitemap.xml">
+  <link rel="robots" type="text/plain" href="robots.txt">
+
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@type": "SportsOrganization",
     "name": "Augusta Pickleball Club",
     "url": "https://augustapickleball.club/",
-    "email": "mailto:hello@augustapickleball.club",
+    "email": "hello@augustapickleball.club",
+    "areaServed": {
+      "@type": "Place",
+      "name": "Augusta, Georgia",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Augusta",
+        "addressRegion": "GA",
+        "addressCountry": "US"
+      }
+    },
     "logo": "https://augustapickleball.club/augusta-pickleball-logo.png",
     "sport": "Pickleball",
-    "areaServed": "Augusta, Georgia",
     "foundingDate": "2025-09-01",
     "sameAs": [
       "https://instagram.com/yourhandle",
@@ -37,7 +49,7 @@
     "contactPoint": [{
       "@type": "ContactPoint",
       "contactType": "customer support",
-      "email": "mailto:hello@augustapickleball.club"
+      "email": "hello@augustapickleball.club"
     }]
   }
   </script>
@@ -49,21 +61,24 @@
 
   <style>
     :root{
-      --bg:#f7faf8;
-      --bg-2:#f3f6ef;
-      --text:#0b1b13;
-      --muted:#5b6b63;
-      --line:#d9e6db;
-      --card:#ffffff;
-      --brand:#0b3d1b;
-      --brand-2:#198754;
-      --accent:#ffd700;
-      --accent-2:#f3eac2;
-      --ring:rgba(255,215,0,.18);
-      --shadow:0 8px 24px rgba(11,61,27,.07);
-      --radius:18px;
-      --radius-lg:26px;
-      --container:1400px;
+  --bg:#f7faf8;
+  --bg-2:#f3f6ef;
+  --text:#0b1b13;
+  --muted:#5b6b63;
+  --line:#d9e6db;
+  --card:#ffffff;
+  --brand:#0b3d1b;
+  --brand-2:#198754;
+  --brand-3:#33d9c2;
+  --brand-4:#2c87f0;
+  --brand-5:#a259f7;
+  --accent:#ffd700;
+  --accent-2:#f3eac2;
+  --ring:rgba(255,215,0,.18);
+  --shadow:0 8px 24px rgba(11,61,27,.07);
+  --radius:18px;
+  --radius-lg:26px;
+  --container:1400px;
     }
     *{box-sizing:border-box}
     html,body{margin:0;padding:0;background:var(--bg);color:var(--text);font-family:Inter,system-ui,Segoe UI,Roboto,Arial,sans-serif}
@@ -97,12 +112,20 @@
     .btn{display:inline-flex;align-items:center;justify-content:center;padding:10px 18px;border-radius:999px;font-weight:600;cursor:pointer;transition:.2s}
     .btn-outline{border:1px solid var(--line);background:#fff}
     .btn-primary{
-      background:linear-gradient(90deg,var(--brand),var(--brand-2),var(--brand-3),var(--brand-4));
+      /* solid fallback so the button is always visible */
+      background: var(--brand-2, #198754);
       color:#fff;
       border:none;
+      /* animated gradient on top; uses newly defined vars with fallbacks */
+      background-image: linear-gradient(90deg,
+        var(--brand),
+        var(--brand-2),
+        var(--brand-3, #33d9c2),
+        var(--brand-4, #2c87f0)
+      );
       background-size:200% 200%;
       animation:gradientShift 6s ease infinite;
-      box-shadow:0 2px 12px rgba(162,89,247,0.10)
+      box-shadow:0 2px 12px rgba(162,89,247,0.10);
     }
     .btn-primary:hover{
       background:linear-gradient(90deg,var(--brand-2),var(--brand-3),var(--brand-4),var(--brand));
@@ -269,7 +292,7 @@
       <div class="container hero-grid">
         <div>
           <div class="eyebrow">Founding Season</div>
-          <h1 class="headline">Augusta’s Pickleball League</h1>
+          <h1 class="headline">Augusta Pickleball League</h1>
           <p class="sub">6–8 weeks • Free public courts • Affordable entry. Bring your teammate and we’ll handle the rest.</p>
           <div class="chips">
             <span class="chip">Round-robin schedule</span>
@@ -279,7 +302,7 @@
           <button id="openReg2" class="btn btn-primary">Reserve Your Team Spot</button>
         </div>
         <div class="mock">
-          <img alt="Pickleball players competing on outdoor courts" src="augusta-pickleball-logo.png" fetchpriority="high" decoding="async" />
+          <img alt="Pickleball players on public courts in Augusta, GA" src="augusta-pickleball-logo.png" fetchpriority="high" decoding="async" />
         </div>
       </div>
     </section>
@@ -307,7 +330,7 @@
     <section id="format">
       <div class="container grid-2">
         <div class="panel">
-          <h2 style="margin:0 0 8px;font-family:Outfit,Inter,sans-serif">How It Works</h2>
+          <h2 style="margin:0 0 8px;font-family:Outfit,Inter,sans-serif">League Format</h2>
           <ul class="muted" style="line-height:1.9;margin:0;padding-left:18px">
             <li>Season length: 6–8 weeks (1 match night per week)</li>
             <li>Match format: to 11 win by 2. Best of 1-3 depending on the game.</li>
@@ -438,12 +461,12 @@
           <p class="help">We’ll provide matching wristbands in your chosen color on week one.</p>
         </div>
 
-        <div class="full"><h3 style="margin:12px 0 4px;font-family:Outfit,Inter,sans-serif">Player 1</h3></div>
+        <div class="full"><h2 style="margin:12px 0 4px;font-family:Outfit,Inter,sans-serif;font-size:1.2rem">Player 1</h2></div>
         <div><label for="p1_name">Full Name</label><input id="p1_name" name="p1_name" required autocomplete="name"></div>
         <div><label for="p1_email">Email</label><input id="p1_email" name="p1_email" type="email" required autocomplete="email"></div>
         <div><label for="p1_phone">Phone</label><input id="p1_phone" name="p1_phone" type="tel" required inputmode="tel" pattern="^\d{3}-\d{3}-\d{4}$" maxlength="12" autocomplete="tel" placeholder="706-123-4567"></div>
 
-        <div class="full"><h3 style="margin:12px 0 4px;font-family:Outfit,Inter,sans-serif">Player 2</h3></div>
+        <div class="full"><h2 style="margin:12px 0 4px;font-family:Outfit,Inter,sans-serif;font-size:1.2rem">Player 2</h2></div>
         <div><label for="p2_name">Full Name</label><input id="p2_name" name="p2_name" required autocomplete="name"></div>
         <div><label for="p2_email">Email</label><input id="p2_email" name="p2_email" type="email" required autocomplete="email"></div>
         <div class="full"><label for="p2_phone">Phone</label><input id="p2_phone" name="p2_phone" type="tel" required inputmode="tel" pattern="^\d{3}-\d{3}-\d{4}$" maxlength="12" autocomplete="tel" placeholder="706-123-4567"></div>
@@ -452,8 +475,6 @@
           <label for="payment">Payment Method</label>
           <select id="payment" name="payment" required>
             <option value="" selected disabled>Select one</option>
-            <option>PayPal</option>
-            <option>CashApp</option>
             <option>Credit/Debit</option>
           </select>
           <p class="help">Registration is confirmed once payment is received.</p>
@@ -464,7 +485,7 @@
           <label for="waiver">I acknowledge I play at my own risk and agree to league rules and good sportsmanship.</label>
         </div>
 
-        <div class="full" style="position:sticky;bottom:-12px;background:#fff;padding-bottom:8px">
+  <div class="full" style="position:sticky;bottom:0;background:#fff;padding:8px 0 10px">
           <button class="btn btn-primary" type="submit">Submit Registration</button>
           <span id="reg-status" class="status" role="status" aria-live="polite"></span>
         </div>
@@ -486,7 +507,47 @@
 
   <footer>
     <div class="container footer-grid">
-      <div>© <span id="y"></span> Augusta Pickleball Club • All rights reserved</div>
+      <div class="footer-legal">
+        © <span id="y"></span> Augusta Pickleball Club • All rights reserved
+        <span class="footer-links">
+          <a href="terms.html">Terms</a>
+          <span class="footer-sep">|</span>
+          <a href="privacy.html">Privacy</a>
+        </span>
+      </div>
+    <style>
+      .footer-legal {
+        display: flex;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 10px;
+        font-size: 1em;
+      }
+      .footer-links {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        margin-left: 14px;
+        font-size: 0.98em;
+      }
+      .footer-links a {
+        color: #198754;
+        text-decoration: none;
+        padding: 0 2px;
+        border-radius: 6px;
+        transition: background 0.15s;
+      }
+      .footer-links a:hover {
+        background: #e6f4ea;
+        text-decoration: underline;
+      }
+      .footer-sep {
+        color: #b0bfc7;
+        font-size: 1em;
+        padding: 0 2px;
+        user-select: none;
+      }
+    </style>
       <div class="socials">
         <a href="https://instagram.com/yourhandle" aria-label="Instagram">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
@@ -562,7 +623,7 @@
     const TEAM_FEE = 40; // e.g., 40 = $40 per team
     const PAYPAL_ME = "https://paypal.me/YOURHANDLE";        // supports /amount (e.g., /40)
     const CASHAPP_TAG = "$YourCashtag";                       // Cash App tag only (with $)
-    const STRIPE_PAYMENT_LINK = "https://buy.stripe.com/YOUR_LINK"; // Stripe Payment Link
+  const STRIPE_PAYMENT_LINK = "https://buy.stripe.com/7sY28s6Dd5775IRfXO0co00"; // Stripe Payment Link
 
     function handlePayment(method){
       const m = (method || '').trim();
