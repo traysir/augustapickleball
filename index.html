@@ -61,7 +61,7 @@
 
   <style>
     :root{
-  --bg:#f7faf8;
+  --bg:#eaf3ff;
   --bg-2:#f3f6ef;
   --text:#0b1b13;
   --muted:#5b6b63;
@@ -81,7 +81,13 @@
   --container:1400px;
     }
     *{box-sizing:border-box}
-    html,body{margin:0;padding:0;background:var(--bg);color:var(--text);font-family:Inter,system-ui,Segoe UI,Roboto,Arial,sans-serif}
+    html,body{
+      margin:0;
+      padding:0;
+      background: linear-gradient(135deg, #eaf3ff 0%, #ebfff6 100%);
+      color:var(--text);
+      font-family:Inter,system-ui,Segoe UI,Roboto,Arial,sans-serif;
+    }
     a{color:inherit;text-decoration:none}
     img{max-width:100%;display:block}
     html{scroll-behavior:smooth}
@@ -149,16 +155,23 @@
 
     section{padding:74px 0;position:relative;}
     section:not(:first-of-type):not(.hero){
-      background:linear-gradient(90deg,rgba(162,89,247,0.04),rgba(90,210,247,0.04),rgba(247,179,43,0.04));
+  background: none;
     }
 
     .full-bleed{position:relative;isolation:isolate}
     .full-bleed::before{
       content:"";position:absolute;inset:0;z-index:-1;
-      background:linear-gradient(135deg, rgba(32,179,108,.08), rgba(44,135,240,.08));
+  background: none;
     }
 
     .hero{padding:100px 0 80px}
+    .hero {
+      padding: 100px 0 80px;
+      /* Slightly darker white for better logo contrast */
+      background: linear-gradient(180deg, rgba(235,238,242,0.98) 0%, rgba(220,225,230,0.98) 100%);
+      position: relative;
+      z-index: 1;
+    }
     .hero::before{background:linear-gradient(180deg, rgba(44,135,240,.10) 0%, rgba(248,251,255,1) 70%)}
     .hero-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:48px;align-items:center}
     .headline{font-family:Outfit,Inter,sans-serif;font-size:clamp(2rem,4vw,3.4rem);line-height:1.05;margin:0 0 12px}
